@@ -19,6 +19,13 @@ mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTop
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/tasks', require('./routes/tasks'));
 
+app.use(cors({
+  origin:[""],
+  methods:["POST","GET"],
+  credentials:true
+
+}))
+
 const path = require('path');
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
